@@ -14,6 +14,8 @@ import org.sikuli.script.Screen;
 import com.google.inject.Inject;
 
 public class LoginScreen {
+	private static final double LOGIN_TIMEOUT_IN_SEC = 5;
+
 	private Logger logger = Logger.getLogger(this.getClass().getName());
 	@Inject
 	private Screen screen;
@@ -34,30 +36,20 @@ public class LoginScreen {
 	}
 
 	public boolean loginFailed() throws Exception {
-		screen.wait(LoginFailedMsg.imgPath(), 10);
 		try {
-			screen.find(MusicControl.imgPath());
+			screen.wait(LoginFailedMsg.imgPath(), LOGIN_TIMEOUT_IN_SEC);
 		} catch (FindFailed e) {
-			if (Pattern.matches("can not find .*MusicControl.*", e.getMessage())) {
-				return true;
-			} else {
-				throw e;
-			}
+			return false;
 		}
-		return false;
+		return true;
 	}
 
 	public boolean loginSucceeded() throws Exception {
-		screen.wait(MusicControl.imgPath(),10);
 		try {
-			screen.find(LoginFailedMsg.imgPath());
+			screen.wait(MusicControl.imgPath(), LOGIN_TIMEOUT_IN_SEC);
 		} catch (FindFailed e) {
-			if (Pattern.matches("can not find .*LoginFailedMsg.*", e.getMessage())) {
-				return true;
-			} else {
-				throw e;
-			}
+			return false;
 		}
-		return false;
+		return true;
 	}
 }
