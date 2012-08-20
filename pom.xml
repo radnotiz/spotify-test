@@ -5,7 +5,7 @@
 	<groupId>my.programming-assignment</groupId>
 	<artifactId>spotify-test</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>pom</packaging>
 
 	<name>spotify-test</name>
 	<url>http://maven.apache.org</url>
@@ -14,44 +14,9 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
-	<repositories>
-		<repository>
-			<id>lib</id>
-			<name>lib</name>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-			<url>file://${project.basedir}/lib</url>
-		</repository>
-	</repositories>
 
-	<dependencies>
-		<dependency>
-			<groupId>org.sikuli</groupId>
-			<artifactId>sikuli-script</artifactId>
-			<version>1.0r930</version>
-		</dependency>
-		<dependency>
-			<groupId>org.testng</groupId>
-			<artifactId>testng</artifactId>
-			<version>6.7</version>
-		</dependency>
-	</dependencies>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.5.1</version>
-				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+	<modules>
+		<module>ui-tests</module>
+		<module>ui-elements</module>
+	</modules>
 </project>
