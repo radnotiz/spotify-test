@@ -8,7 +8,6 @@ import org.sikuli.script.Screen;
 import org.sikuli.script.Settings;
 
 import com.google.inject.AbstractModule;
-import com.google.inject.Inject;
 import com.google.inject.Provides;
 import com.google.inject.Singleton;
 
@@ -33,13 +32,17 @@ public class UiTestModule extends AbstractModule {
 	@Provides
 	@Singleton
 	public App appProvider(Screen screen) {
-		return new App(getAppName());
+		App app = new App(getAppName());
+		logger.info("App initialized: " + app);
+		return app;
 	}
 
 	@Provides
 	@Singleton
 	public Screen screenProvider() {
-		return new Screen();
+		Screen screen = new Screen();
+		logger.info("Screen initialized: " + screen);
+		return screen;
 	}
 
 	private String getAppName() {
@@ -50,7 +53,7 @@ public class UiTestModule extends AbstractModule {
 		} else {
 			appName=appNameFromSystemEnv;
 		}
-		logger.info("Name of the application to test: " + appName);
+		logger.info("Name of the tested application has been set to: " + appName);
 		return appName;
 	}
 
