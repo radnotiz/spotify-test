@@ -28,6 +28,7 @@ public class LoginScreen {
 		screen.click(UsernameInput.imgPath());
 		screen.paste(username);
 		screen.type(Key.TAB);
+		screen.getRobot().delay(500);
 		screen.paste(password);
 		screen.type(Key.ENTER);
 	}
@@ -47,7 +48,16 @@ public class LoginScreen {
 	}
 
 	public boolean loginSucceeded() throws Exception {
-		screen.find(MusicControl.imgPath());
-		return true;
+		screen.wait(MusicControl.imgPath(),10);
+		try {
+			screen.find(LoginFailedMsg.imgPath());
+		} catch (FindFailed e) {
+			if (Pattern.matches("can not find .*LoginFailedMsg.*", e.getMessage())) {
+				return true;
+			} else {
+				throw e;
+			}
+		}
+		return false;
 	}
 }
