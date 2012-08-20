@@ -5,10 +5,12 @@ import static org.junit.Assert.assertThat;
 
 import java.util.logging.Logger;
 
+import my.programming_assignment.spotify_test.ui_tests.LoginScreen;
+import my.programming_assignment.spotify_test.ui_tests.MainScreen;
 import my.programming_assignment.spotify_test.ui_tests.UiTestModule;
 
 import org.sikuli.script.App;
-import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Guice;
@@ -24,17 +26,20 @@ public class LoginTest {
 	private App app;
 	@Inject
 	private LoginScreen loginScreen;
+	@Inject
+	private MainScreen mainScreen;
 
 	@BeforeClass
-	@AfterMethod
-	public void setUp() throws Exception {
+	public void logOff() throws Exception {
 		app.focus();
-		app.close();
-		Thread.sleep(1000);
+		if (mainScreen.isLoggedIn()) {
+			mainScreen.logOff(); 
+		}
 	}
 
 	@BeforeMethod
 	public void openApp() throws Exception {
+		Thread.sleep(1000);
 		if (app.open() == null) {
 			throw new RuntimeException("Unable to open application. Check logs.");
 		}
@@ -47,9 +52,11 @@ public class LoginTest {
 		assertThat(loginScreen.loginFailed(), is(true));
 	}
 
-	@Test(dataProvider = "valid-credentials", dataProviderClass = CredentialsProvider.class)
+	@Test(groups = "successful-login",
+			dataProvider = "valid-credentials",
+			dataProviderClass = CredentialsProvider.class)
 	public void loginWithValidCredentials(String username, String password) throws Exception {
 		loginScreen.submitCredentials(username, password);
-		assertThat(loginScreen.loginSucceeded(), is(true));
+		assertThat(mainScreen.isLoggedIn(), is(true));
 	}
 }
