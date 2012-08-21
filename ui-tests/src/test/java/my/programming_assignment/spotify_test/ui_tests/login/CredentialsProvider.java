@@ -8,13 +8,13 @@ public class CredentialsProvider {
 	private static String validPassword = "1qasdf";
 	private static String validUsername = "zoltan.radnoti@disney.com";
 
-	@DataProvider(name = "invalid-credentials")
+	@DataProvider(name = "invalid_credentials")
 	public static Object[][] invalidCredentials() {
 		return new Object[][] { { validUsername, invalidPassword }, { invalidUsername, validPassword },
 				{ invalidUsername, invalidPassword } };
 	}
 
-	@DataProvider(name = "valid-credentials")
+	@DataProvider(name = "valid_credentials")
 	public static Object[][] validCredentials() {
 		return new Object[][] { { validUsername, validPassword } };
 	}

@@ -12,6 +12,7 @@ import org.testng.annotations.Test;
 
 import com.google.inject.Inject;
 
+@Test(groups = "functional_test")
 @Guice(modules= UiTestModule.class)
 public class PlayTrackTest {
 	@Inject
@@ -24,7 +25,7 @@ public class PlayTrackTest {
 		mainScreen.searchFor("artist:'etta james' title:'something' + 'live' album:'At Last'");
 	}
 	
-	@Test(dependsOnGroups = "successful-search")
+	@Test(dependsOnGroups = "successful_search")
 	public void playTrack() throws Exception {
 		mainScreen.playTrack(ettaJamesSong);
 		assertThat("Song is not played",mainScreen.isSongPlayed(), is(true));

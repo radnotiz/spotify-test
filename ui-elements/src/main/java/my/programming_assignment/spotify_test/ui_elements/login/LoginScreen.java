@@ -18,6 +18,8 @@ public class LoginScreen {
 	@Inject
 	private UsernameInput usernameInput;
 	@Inject
+	private LogIn logIn;
+	@Inject
 	private LoginFailedMsg loginFailedMsg;
 	@Inject
 	private PlayMusic musicControl;
@@ -42,6 +44,6 @@ public class LoginScreen {
 	}
 
 	public Boolean isLoggedOut() {
-		return screen.exists(usernameInput.imgPath(), LOGIN_TIMEOUT_IN_SEC) != null;
+		return screen.exists(logIn.imgPath(), LOGIN_TIMEOUT_IN_SEC) != null;
 	}
 }

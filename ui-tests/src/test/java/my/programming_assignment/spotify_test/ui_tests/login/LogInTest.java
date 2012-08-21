@@ -1,7 +1,5 @@
 package my.programming_assignment.spotify_test.ui_tests.login;
 
-import static my.programming_assignment.spotify_test.ui_tests.login.CredentialsProvider.validPassword;
-import static my.programming_assignment.spotify_test.ui_tests.login.CredentialsProvider.validUsername;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 import my.programming_assignment.spotify_test.ui_elements.Application;
@@ -15,8 +13,9 @@ import org.testng.annotations.Test;
 
 import com.google.inject.Inject;
 
+@Test(groups = "functional_test")
 @Guice(modules = UiTestModule.class)
-public class LogOutTest {
+public class LogInTest {
 	@Inject
 	private Application application;
 	@Inject
@@ -26,14 +25,26 @@ public class LogOutTest {
 
 	@BeforeMethod
 	public void openApp() throws Exception {
-		if (loginScreen.isLoggedOut()) {
-			loginScreen.submitCredentials(validUsername(), validPassword());
+		application.close();
+		Thread.sleep(500);
+		application.open();
+		if (mainScreen.isLoggedIn()) {
+			mainScreen.logOut(); 
+			Thread.sleep(500);
 		}
 	}
 
-	@Test(dependsOnGroups = "successful-login")
-	public void logOff() throws Exception {
-		mainScreen.logOut();
-		assertThat(loginScreen.isLoggedOut(), is(true));
+	@Test(dataProvider = "invalid_credentials", dataProviderClass = CredentialsProvider.class)
+	public void loginWithInvalidCredentials(String username, String password) throws Exception {
+		loginScreen.submitCredentials(username, password);
+		assertThat(loginScreen.loginFailed(), is(true));
+	}
+
+	@Test(groups = "successful_login",
+			dataProvider = "valid_credentials",
+			dataProviderClass = CredentialsProvider.class)
+	public void loginWithValidCredentials(String username, String password) throws Exception {
+		loginScreen.submitCredentials(username, password);
+		assertThat(mainScreen.isLoggedIn(), is(true));
 	}
 }
