@@ -37,6 +37,7 @@ public class LogInTest {
 			dataProviderClass = CredentialsProvider.class)
 	public void loginWithValidCredentials(String username, String password) throws Exception {
 		loginScreen.submitCredentials(username, password);
-		assertThat(application.isLoggedIn(), is(true));
+		assertThat("Log in to application expected to be successful, but has failed", application.isLoggedIn(),
+				is(true));
 	}
 }

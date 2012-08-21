@@ -36,6 +36,7 @@ public class LogOutTest {
 	@Test(dependsOnGroups = "successful_login")
 	public void logOut() throws Exception {
 		mainScreen.logOut();
-		assertThat(application.isLoggedOut(), is(true));
+		assertThat("Log out of application expected to be successful, but has failed", application.isLoggedOut(),
+				is(true));
 	}
 }

@@ -36,7 +36,7 @@ public class LogInFailureTest {
 	@Test(groups = "login_failure", dataProvider = "invalid_credentials", dataProviderClass = CredentialsProvider.class)
 	public void loginWithInvalidCredentials(String username, String password) throws Exception {
 		loginScreen.submitCredentials(username, password);
-		assertThat(loginScreen.loginFailed(), is(true));
+		assertThat("Log in to application expected to fail, but succeeded", loginScreen.loginFailed(), is(true));
 	}
 
 	@AfterMethod

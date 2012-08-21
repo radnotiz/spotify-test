@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 import com.google.inject.Inject;
 
 @Test(groups = "functional_test")
-@Guice(modules= UiTestModule.class)
+@Guice(modules = UiTestModule.class)
 public class PlayTrackTest {
 	@Inject
 	private MainScreen mainScreen;
@@ -24,10 +24,10 @@ public class PlayTrackTest {
 	public void searchForEttaJamesSong() throws Exception {
 		mainScreen.searchFor("artist:'etta james' title:'something' + 'live' album:'At Last'");
 	}
-	
+
 	@Test(dependsOnGroups = "successful_search")
 	public void playTrack() throws Exception {
 		mainScreen.playTrack(ettaJamesSong);
-		assertThat("Song is not played",mainScreen.isSongPlayed(), is(true));
+		assertThat("Song expected to be played, but was not", mainScreen.isSongPlayed(), is(true));
 	}
 }

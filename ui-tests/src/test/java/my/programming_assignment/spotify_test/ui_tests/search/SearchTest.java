@@ -41,12 +41,12 @@ public class SearchTest {
 	@Test(groups = "successful_search", dependsOnGroups = "successful_login")
 	public void searchForArtist() throws Exception {
 		mainScreen.searchFor("Bob Marley");
-		assertThat(mainScreen.isPresent(bobMarley), is(true));
+		assertThat("Bob Marley is missing from the screen", mainScreen.isPresent(bobMarley), is(true));
 	}
 
 	@Test(groups = "successful_search", dependsOnGroups = "successful_login")
 	public void advancedSearch() throws Exception {
 		mainScreen.searchFor("artist:'Etta James' title:'Something' + 'live' album:'At Last'");
-		assertThat(mainScreen.isPresent(ettaJamesSong), is(true));
+		assertThat("Etta James' song is missing from the screen", mainScreen.isPresent(ettaJamesSong), is(true));
 	}
 }

@@ -101,6 +101,6 @@ public class MainScreen {
 		match.onChange(observer);
 		match.observe(5);
 
-		return !observer.targetHasChanged();
+		return observer.targetHasChanged();
 	}
 }
