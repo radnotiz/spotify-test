@@ -27,6 +27,7 @@ public class LogOutTest {
 
 	@BeforeMethod
 	public void openApp() throws Exception {
+		application.open();
 		if (loginScreen.isLoggedOut()) {
 			loginScreen.submitCredentials(validUsername(), validPassword());
 		}

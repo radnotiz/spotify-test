@@ -29,18 +29,19 @@ public class LogInTest {
 		Thread.sleep(500);
 		application.open();
 		if (mainScreen.isLoggedIn()) {
-			mainScreen.logOut(); 
+			mainScreen.logOut();
 			Thread.sleep(500);
 		}
 	}
 
-	@Test(dataProvider = "invalid_credentials", dataProviderClass = CredentialsProvider.class)
+	@Test(groups = "login_failure", dataProvider = "invalid_credentials", dataProviderClass = CredentialsProvider.class)
 	public void loginWithInvalidCredentials(String username, String password) throws Exception {
 		loginScreen.submitCredentials(username, password);
 		assertThat(loginScreen.loginFailed(), is(true));
 	}
 
 	@Test(groups = "successful_login",
+			dependsOnGroups = "login_failure",
 			dataProvider = "valid_credentials",
 			dataProviderClass = CredentialsProvider.class)
 	public void loginWithValidCredentials(String username, String password) throws Exception {

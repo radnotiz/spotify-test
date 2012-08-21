@@ -12,11 +12,17 @@ import com.google.inject.Provides;
 import com.google.inject.Singleton;
 
 public class UiTestModule extends AbstractModule {
-	
+
 	private static final String SIKULI_IMAGE_PATH = "SIKULI_IMAGE_PATH";
 	private static final String APP_NAME = "APP_NAME";
-	private Logger logger = Logger.getLogger(this.getClass().getName());
+	private static Logger logger = Logger.getLogger(UiTestModule.class.getName());
 
+	public static String getCodeSourceLocationPath() {
+		File codeSourceLocation = new File(UiTestModule.class.getProtectionDomain().getCodeSource().getLocation()
+				.getPath());
+		return codeSourceLocation.isDirectory() ? codeSourceLocation.getPath() : codeSourceLocation
+				.getParent();
+	}
 	@Override
 	protected void configure() {
 		setImagePath();
@@ -51,7 +57,7 @@ public class UiTestModule extends AbstractModule {
 		if (appNameFromSystemEnv == null) {
 			logger.info(APP_NAME + " system property has not been set. Using default.");
 		} else {
-			appName=appNameFromSystemEnv;
+			appName = appNameFromSystemEnv;
 		}
 		logger.info("Name of the tested application has been set to: " + appName);
 		return appName;
@@ -66,10 +72,6 @@ public class UiTestModule extends AbstractModule {
 	}
 
 	private String getRelativPathToTheImages() {
-		File codeSourceLocation = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation()
-				.getPath());
-		String currentDirPath = codeSourceLocation.isDirectory() ? codeSourceLocation.getPath() : codeSourceLocation
-				.getParent();
-		return new File(currentDirPath).getParent().concat("/images");
+		return new File(getCodeSourceLocationPath()).getParent().concat("/images");
 	}
 }
