@@ -14,11 +14,11 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
-
 	<modules>
 		<module>ui-tests</module>
 		<module>ui-elements</module>
 	</modules>
+
 
 	<build>
 		<pluginManagement>
@@ -35,4 +35,13 @@
 			</plugins>
 		</pluginManagement>
 	</build>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.google.inject</groupId>
+				<artifactId>guice</artifactId>
+				<version>3.0</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 </project>

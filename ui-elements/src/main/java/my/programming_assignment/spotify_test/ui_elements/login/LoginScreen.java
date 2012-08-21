@@ -1,12 +1,9 @@
-package my.programming_assignment.spotify_test.ui_tests;
+package my.programming_assignment.spotify_test.ui_elements.login;
 
 import java.util.logging.Logger;
 
-import my.programming_assignment.spotify_test.ui_elements.login.LoginFailedMsg;
-import my.programming_assignment.spotify_test.ui_elements.login.UsernameInput;
-import my.programming_assignment.spotify_test.ui_elements.main.MusicControl;
+import my.programming_assignment.spotify_test.ui_elements.main.controls.PlayMusic;
 
-import org.sikuli.script.FindFailed;
 import org.sikuli.script.Key;
 import org.sikuli.script.Screen;
 
@@ -23,7 +20,7 @@ public class LoginScreen {
 	@Inject
 	private LoginFailedMsg loginFailedMsg;
 	@Inject
-	private MusicControl musicControl;
+	private PlayMusic musicControl;
 
 	@Inject
 	public LoginScreen(Screen screen) {

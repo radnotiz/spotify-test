@@ -1,4 +1,4 @@
-package my.programming_assignment.spotify_test.ui_elements.main;
+package my.programming_assignment.spotify_test.ui_elements.main.header;
 
 import my.programming_assignment.spotify_test.ui_elements.UiElement;
 
