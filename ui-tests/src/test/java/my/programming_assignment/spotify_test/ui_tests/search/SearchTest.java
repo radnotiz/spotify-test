@@ -4,6 +4,7 @@ import static my.programming_assignment.spotify_test.ui_tests.login.CredentialsP
 import static my.programming_assignment.spotify_test.ui_tests.login.CredentialsProvider.validUsername;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
+import my.programming_assignment.spotify_test.ui_elements.Application;
 import my.programming_assignment.spotify_test.ui_elements.login.LoginScreen;
 import my.programming_assignment.spotify_test.ui_elements.main.MainScreen;
 import my.programming_assignment.spotify_test.ui_elements.main.search.BobMarley;
@@ -20,6 +21,8 @@ import com.google.inject.Inject;
 @Guice(modules = UiTestModule.class)
 public class SearchTest {
 	@Inject
+	private Application application;
+	@Inject
 	private MainScreen mainScreen;
 	@Inject
 	private LoginScreen loginScreen;
@@ -30,7 +33,7 @@ public class SearchTest {
 
 	@BeforeClass
 	public void logIn() throws Exception {
-		if (loginScreen.isLoggedOut()) {
+		if (application.isLoggedOut()) {
 			loginScreen.submitCredentials(validUsername(), validPassword());
 		}
 	}

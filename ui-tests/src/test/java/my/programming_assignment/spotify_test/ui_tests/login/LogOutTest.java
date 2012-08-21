@@ -28,7 +28,7 @@ public class LogOutTest {
 	@BeforeMethod
 	public void openApp() throws Exception {
 		application.open();
-		if (loginScreen.isLoggedOut()) {
+		if (!application.isLoggedIn()) {
 			loginScreen.submitCredentials(validUsername(), validPassword());
 		}
 	}
@@ -36,6 +36,6 @@ public class LogOutTest {
 	@Test(dependsOnGroups = "successful_login")
 	public void logOut() throws Exception {
 		mainScreen.logOut();
-		assertThat(loginScreen.isLoggedOut(), is(true));
+		assertThat(application.isLoggedOut(), is(true));
 	}
 }

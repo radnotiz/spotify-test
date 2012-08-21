@@ -57,7 +57,7 @@ public class MainScreen {
 			screen.mouseDown(Button.LEFT);
 			screen.mouseUp(Button.LEFT);
 		}
-		screen.paste(string);
+		screen.type(string);
 		screen.type(Key.ENTER);
 	}
 
@@ -70,10 +70,6 @@ public class MainScreen {
 		screen.getRobot().delay(500);
 		screen.click(logOut.imgPath());
 		screen.getRobot().delay(2000);
-	}
-
-	public boolean isLoggedIn() throws Exception {
-		return screen.exists(playMusic.imgPath()) != null;
 	}
 
 	public void playTrack(UiElement track) throws Exception {
