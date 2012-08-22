@@ -1,0 +1,14 @@
+Change build automation
+-----------------------
+Over 60% of my time were spent on programming maven 
+
+A suitable alternative could be Gradle. It is able to use existing maven repository.
+http://www.gradle.org/docs/current/userguide/tutorial_java_projects.html
+
+
+Generate sources that plugs pictures into Java classes
+------------------------------------------------------
+
+
+Extend test cases
+-----------------
