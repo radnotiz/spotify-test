@@ -29,18 +29,25 @@
 			</includes>
 		</fileSet>
 		<fileSet>
-			<directory>src/test/resources</directory>
+			<directory>src/main/resources</directory>
 			<outputDirectory>/</outputDirectory>
 			<includes>
-				<include>run</include>
+				<include>*</include>
 			</includes>
 			<filtered>true</filtered>
 		</fileSet>
 		<fileSet>
-			<directory>src/test/resources</directory>
+			<directory>src/main/resources</directory>
 			<outputDirectory>/</outputDirectory>
 			<includes>
 				<include>*.properties</include>
+			</includes>
+		</fileSet>
+		<fileSet>
+			<directory>src/main/resources/testdata</directory>
+			<outputDirectory>/testdata</outputDirectory>
+			<includes>
+				<include>*</include>
 			</includes>
 		</fileSet>
 	</fileSets>

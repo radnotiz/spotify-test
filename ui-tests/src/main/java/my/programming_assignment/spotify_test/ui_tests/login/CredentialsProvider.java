@@ -15,16 +15,17 @@ public class CredentialsProvider {
 	private static Properties properties = new Properties();
 	static {
 		try {
-			properties.load(new FileReader(new File(UiTestModule.getCodeSourceLocationPath()).getParent().concat(
-					"/credentials.properties")));
+			properties.load(new FileReader(UiTestModule.getTestDataDirPath().concat("/credentials.properties")));
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
-		invalidUsername = properties.getProperty("invalidUsername","<not set in credentials.properties>");
-		invalidPassword = properties.getProperty("invalidPassword","<not set in credentials.properties>");
-		validPassword = properties.getProperty("validPassword","<not set in credentials.properties>");
-		validUsername = properties.getProperty("validUsername","<not set in credentials.properties>");
+		invalidUsername = properties.getProperty("invalidUsername", "<not set in credentials.properties>");
+		invalidPassword = properties.getProperty("invalidPassword", "<not set in credentials.properties>");
+		validPassword = properties.getProperty("validPassword", "<not set in credentials.properties>");
+		validUsername = properties.getProperty("validUsername", "<not set in credentials.properties>");
 	}
+
+
 
 	@DataProvider(name = "invalid_credentials")
 	public static Object[][] invalidCredentials() {
