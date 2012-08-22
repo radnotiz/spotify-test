@@ -1,2 +1,11 @@
 /test-output
 /target
+
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+.DS_Store
