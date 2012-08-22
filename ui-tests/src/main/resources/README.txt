@@ -2,8 +2,11 @@ How to use Spotify ${project.artifactId}
 
 version: ${project.version}
 
+Preparation
+	after extracting spotify-${project.artifactId}-${project.version}-bin.tar.gz or zip file
+	edit file <at the extracted directory>/testdata/credentials.properties
+
 Execution:
-	extract spotify-${project.artifactId}-${project.version}-bin.tar.gz or zip file
 	at the extracted directory> sh ./run
 		or
 	at the extracted directory> cmd.exe run
