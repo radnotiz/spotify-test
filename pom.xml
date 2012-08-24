@@ -19,7 +19,6 @@
 		<module>ui-elements</module>
 	</modules>
 
-
 	<build>
 		<pluginManagement>
 			<plugins>
@@ -35,6 +34,7 @@
 			</plugins>
 		</pluginManagement>
 	</build>
+
 	<dependencyManagement>
 		<dependencies>
 			<dependency>

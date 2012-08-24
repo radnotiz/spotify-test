@@ -8,6 +8,20 @@
 	</parent>
 	<artifactId>ui-elements</artifactId>
 
+	<repositories>
+		<repository>
+			<id>lib</id>
+			<name>lib</name>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<url>${project.baseUri}/lib/</url>
+		</repository>
+	</repositories>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.sikuli</groupId>
@@ -19,66 +33,5 @@
 			<artifactId>guice</artifactId>
 		</dependency>
 	</dependencies>
-<!-- 
-	<build>
-		<plugins>
-			<plugin>
-				<configuration>
-				
-					<cfgFile>src/main/resources/freemarker/config.fmpp</cfgFile>
-					<outputDirectory>target/main/generated-sources/fmpp/</outputDirectory>
-					<templateDirectory>src/main/resources/templates/</templateDirectory>
-				</configuration>
-				<groupId>com.googlecode.fmpp-maven-plugin</groupId>
-				<artifactId>fmpp-maven-plugin</artifactId>
-				<version>1.0</version>
-				<executions>
-					<execution>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>generate</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-		<pluginManagement>
-			<plugins>
-			-->	<!--This plugin's configuration is used to store Eclipse m2e settings 
-					only. It has no influence on the Maven build itself. -->
-	<!-- 			<plugin>
-					<groupId>org.eclipse.m2e</groupId>
-					<artifactId>lifecycle-mapping</artifactId>
-					<version>1.0.0</version>
-					<configuration>
-						<lifecycleMappingMetadata>
-							<pluginExecutions>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>
-											com.googlecode.fmpp-maven-plugin
-										</groupId>
-										<artifactId>
-											fmpp-maven-plugin
-										</artifactId>
-										<versionRange>
-											[1.0,)
-										</versionRange>
-										<goals>
-											<goal>generate</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore></ignore>
-									</action>
-								</pluginExecution>
-							</pluginExecutions>
-						</lifecycleMappingMetadata>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
-	</build>
 
--->
 </project>
