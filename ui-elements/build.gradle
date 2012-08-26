@@ -1,0 +1,4 @@
+dependencies {
+	compile group: 'org.sikuli', name: 'sikuli-script', version: '1.0r930'
+	compile group: 'com.google.inject', name: 'guice', version: '3.0'
+}

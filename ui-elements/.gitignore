@@ -1,1 +1,14 @@
+/bin
+/test-output
+
+#Eclipse
+/.settings
+/.classpath
+/.project
+
+#Maven
 /target
+
+#Gradle
+/build
+/.gradle
